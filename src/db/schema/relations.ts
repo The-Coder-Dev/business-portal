@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 
 import { users, userProfiles, staffAssignments } from "./users";
+import { session, account } from "./auth";
 import { countries, states, cities, pincodes } from "./locations";
 import {
   categories,
@@ -49,6 +50,10 @@ export const usersRelations = relations(users, ({ one, many }) => ({
     fields: [users.id],
     references: [userProfiles.userId],
   }),
+  // Better Auth relations
+  sessions: many(session),
+  accounts: many(account),
+  // Business domain relations
   businesses: many(businesses),
   reviews: many(reviews),
   reviewReplies: many(reviewReplies),
@@ -527,5 +532,21 @@ export const recentlyViewedRelations = relations(recentlyViewed, ({ one }) => ({
   business: one(businesses, {
     fields: [recentlyViewed.businessId],
     references: [businesses.id],
+  }),
+}));
+
+// ─── Better Auth ──────────────────────────────────────────────────────────────
+
+export const sessionRelations = relations(session, ({ one }) => ({
+  user: one(users, {
+    fields: [session.userId],
+    references: [users.id],
+  }),
+}));
+
+export const accountRelations = relations(account, ({ one }) => ({
+  user: one(users, {
+    fields: [account.userId],
+    references: [users.id],
   }),
 }));
