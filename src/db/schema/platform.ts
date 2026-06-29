@@ -1,6 +1,7 @@
 import {
   boolean,
   index,
+  integer,
   jsonb,
   pgTable,
   text,
@@ -158,7 +159,7 @@ export const searchHistory = pgTable(
     categoryId: uuid("category_id"),
     cityId: uuid("city_id"),
     filters: jsonb("filters"), // Applied filter state as JSON
-    resultCount: uuid("result_count"), // null = not recorded
+    resultCount: integer("result_count"), // null = not recorded
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
