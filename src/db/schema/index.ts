@@ -20,6 +20,9 @@ export * from "./categories";
 // Users & Staff
 export * from "./users";
 
+// Auth (Better Auth — sessions, accounts, verifications)
+export * from "./auth";
+
 // Business Core
 export * from "./businesses";
 

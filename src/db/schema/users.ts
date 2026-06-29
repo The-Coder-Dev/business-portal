@@ -86,6 +86,7 @@ export const userProfiles = pgTable("user_profiles", {
  * verification workloads. Allows fine-grained workload distribution without
  * adding columns to users.
  */
+
 export const staffAssignments = pgTable(
   "staff_assignments",
   {
