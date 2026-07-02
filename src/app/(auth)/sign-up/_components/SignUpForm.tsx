@@ -47,8 +47,8 @@ export function SignUpForm() {
       },
       {
         onSuccess: () => {
-          // New users are always assigned role=visitor — redirect to home
-          router.push("/");
+          // New users are always assigned role=visitor — redirect to dashboard
+          router.push("/dashboard");
           router.refresh();
         },
         onError: (ctx) => {
