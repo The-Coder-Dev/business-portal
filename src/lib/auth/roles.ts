@@ -49,5 +49,5 @@ export const ROLE_REDIRECTS: Record<UserRole, string> = {
   admin: "/admin",
   staff: "/staff",
   business_owner: "/dashboard",
-  visitor: "/",
+  visitor: "/dashboard",
 };

@@ -43,7 +43,7 @@ export const ROLE_PROTECTED_PREFIXES: Array<{
 }> = [
   { prefix: "/admin", roles: ["admin", "super_admin"] },
   { prefix: "/staff", roles: ["staff", "admin", "super_admin"] },
-  { prefix: "/dashboard", roles: ["business_owner", "admin", "super_admin"] },
+  { prefix: "/dashboard", roles: ["visitor", "business_owner", "admin", "super_admin"] },
 ];
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
