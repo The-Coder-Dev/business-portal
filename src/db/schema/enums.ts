@@ -3,6 +3,7 @@ import { pgEnum } from "drizzle-orm/pg-core";
 // ─── User & Role Enums ────────────────────────────────────────────────────────
 
 export const userRoleEnum = pgEnum("user_role", [
+  "super_admin",
   "admin",
   "staff",
   "business_owner",

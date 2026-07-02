@@ -12,7 +12,9 @@ import { users } from "@/db/schema/users";
 export const session = pgTable(
   "session",
   {
-    id: text("id").primaryKey(),
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
     expiresAt: timestamp("expires_at").notNull(),
     token: text("token").notNull().unique(),
     createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -37,7 +39,9 @@ export const session = pgTable(
 export const account = pgTable(
   "account",
   {
-    id: text("id").primaryKey(),
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
     accountId: text("account_id").notNull(),
     providerId: text("provider_id").notNull(),
     userId: uuid("user_id")
@@ -67,7 +71,9 @@ export const account = pgTable(
 export const verification = pgTable(
   "verification",
   {
-    id: text("id").primaryKey(),
+    id: text("id")
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
     identifier: text("identifier").notNull(),
     value: text("value").notNull(),
     expiresAt: timestamp("expires_at").notNull(),
@@ -79,5 +85,3 @@ export const verification = pgTable(
   },
   (table) => [index("verification_identifier_idx").on(table.identifier)]
 );
-export { users };
-
